@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrese</title>
+    <link rel="stylesheet" href="./style/registro.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div action="" class="div1">
+        <h3 class="titulos">Regístrate </h3>
+
+        <input type="text" name="" id="nombre" class="email2" placeholder="Nombre"> <br>
+        <input type="text" name="" id="apellidos" class="email2" placeholder="Apellidos"><br>
+        <input type="email" name="" class="email2" id="email" placeholder="ejemplo@gmail.com"><br>
+        <input type="password" name="" class="email2" id="pass" placeholder="***********"><br> <br>
+        
+        <button class="email2" id="Ingresar">Registrarme</button>
+        
+        <button type="reset" class="email2" id="limpiar"> Limpiar</button>
+
+        <p id="link">¿Ya tienes cuenta? <a href="./index.html" >INCIAR  SESIÓN</a></p> 
+        
+
+        </div>
+    </div>
+
+
+    
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+        // creamos una nueva cuenta
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+        // import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+    
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+        apiKey: "AIzaSyAUDZMsdjf-oeSaX5KtQIWAtH9tajhXLqw",
+        authDomain: "autenticacion-b86b8.firebaseapp.com",
+        projectId: "autenticacion-b86b8",
+        storageBucket: "autenticacion-b86b8.appspot.com",
+        messagingSenderId: "103837217583",
+        appId: "1:103837217583:web:c4b1a2e94d958bfeca67da"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+        
+
+        //conectamos con el ID y obtenemos lo valores para crear cuenta
+        document.getElementById("Ingresar").addEventListener("click", function(){
+          //obtener los valores
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("pass").value;
+
+          //realizo la conexion de pagina web a fire base
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+        const user = userCredential.user;
+          // ...
+        alert("tu cuenta esta creada en firebase")
+
+        })
+        .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("tu cuenta no fue creada por falta de datos o ya esta registrada")
+          // ..
+
+        });
+        })
+
+        //conectamos con el ID y obtenemos lo valores para inciar sesion
+        document.getElementById("acceder").addEventListener("click", function(){
+        const email1 = document.getElementById("email1").value;
+        const pass1 = document.getElementById("pass1").value;
+          //realizo conexxion con fire base
+
+        signInWithEmailAndPassword(auth, email1, pass1)
+        .then((userCredential) => {
+          // Signed in 
+        const user = userCredential.user;
+        alert("ingresaste correctamente")
+          // ...
+          //para que le lleve a otra pagina
+          // window.open("https://www.facebook.com/", "mi pagina favorita xd" , "width=300px, height=200px")
+          //que aparezca una pagina propia
+        window.open("prueba.html", "width=300px, height=200px")
+        })
+        .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("esa cuenta no existe, registrese")
+        });
+
+        })
+
+        function limpiar(){
+          //creamos una funcion para limpiar todo el conteniudo del formulario
+        document.getElementsByClassName("div2").reset();
+        }
+
+        document.getElementById("google").addEventListener("click" ,function(){
+        signInWithRedirect(auth, provider);
+        
+        getRedirectResult(auth)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access Google APIs.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+
+            // The signed-in user info.
+            const user = result.user;
+            window.open("prueba.html", "width=300px, height=200px")
+            alert("usted inicio sesion con google")
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+            // alert("usted inicio sesion con google")
+        });
+        })
+    </script>
+
+    
+</body>
+</html>

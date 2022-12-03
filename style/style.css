@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Maven+Pro:wght@500&family=Nunito:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    
+    font-family: 'Chakra Petch', sans-serif;
+    background-image: url("https://i.pinimg.com/originals/8e/ec/64/8eec6467d585bada652c4620e6880ea0.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 90px;
+}
+body:before {
+    content: "";
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    opacity: 0.3;
+    z-index: -100;
+}
+
+
+.contenedor{
+    
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    /* align-items: center; */
+    /* margin: o auto; */
+    /* width: fit-content; */
+    text-align: center;
+    text-align: center;
+    justify-content: center;
+    
+    
+}
+/* .div1{
+    background-color: rgba(0, 0, 0, 0.849);
+    padding: 10px;
+    box-shadow: -1px 4px 28px 0px rgba(200,166,193,0.486);
+    width: 300px;
+    height: 500px;
+    
+} */
+
+.div2{
+    background-color: rgba(0, 0, 0, 0.849);
+    padding: 10px;
+    box-shadow: -1px 4px 28px 0px rgba(200,166,193,0.486);
+    /* margin-left: 70px; */
+    width: 300px;   
+    text-align: center;
+}
+.titulos{
+    color:white;
+    letter-spacing: 3px;
+    padding: 60px;
+    font-weight: bold;
+    padding-bottom: 30px;
+
+}
+#email, #pass, #email1, #pass1{
+    padding: 8px;
+    margin: 15px;
+    border: 1px solid rgb(192, 27, 96);
+    background: transparent;
+    box-shadow: 1px 1px 1px 0px rgba(200,166,193,0.486);
+    /* transition: all 1.5s; */
+    width: 220px;
+    color: white;
+    letter-spacing: 3px;
+    text-align: center; 
+    font-family: 'Chakra Petch', sans-serif;
+    border-radius: 10px;
+}
+
+
+
+
+#link{
+    text-align: center;
+    border: 1px solid rgb(192, 27, 96);
+    color: white;
+    text-decoration: none;
+    padding: 4px;
+    border-radius: 5px;
+    margin: 15px;
+    margin-bottom: 50px;
+
+}
+#link a{
+    text-decoration: none;
+}
+
+
+#Ingresar, #limpiar , #acceder, #reset, #google{
+    /* background-color:rgb(192, 27, 96) ; */
+    color: white;
+    margin-bottom: 15px;
+    padding: 4px;
+    width: 150px;
+    letter-spacing: 3px;    
+    /* box-shadow: 1px 1px 1px 0px rgba(200,166,193,0.486); */
+    font-family: 'Chakra Petch', sans-serif;
+    background: linear-gradient(rgb(192, 27, 96), rgb(88, 16, 129));
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+/* #email{
+    transition: all 1.5s;
+
+}
+#email:hover{
+    transform: scale(1.1);
+    border: 1px solid white;
+} */
+.email2{
+    transition: 1.5s;
+    
+
+}
+.email2:hover{
+    transform: scale(1.1);
+    border: 2px solid white;    
+}
+
+
